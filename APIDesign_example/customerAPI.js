@@ -10,7 +10,7 @@ app.use(express.json());
 // paths '/customer' are handled by customerRouter
 app.use(customerRouter);
 
-app.get("/", (req, res) => res.send("Server 3: Hello World! try"));
+app.get("/", (req, res) => res.send("Server 3: Hello World! haha"));
 
 // For invalid routes
 app.get("*", (req, res) => {
