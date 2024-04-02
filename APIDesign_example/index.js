@@ -1,10 +1,26 @@
 import express from "express";
 
+import { customerRouter } from "./customers/customer.route.js";
+import { quizzesRouter } from "./quizzes/quizzes.router.js";
 const app = express();
 const PORT = 3000;
-app.get("/", (req, res) => res.send("Server:try haha!"));
+
+// This is a built-in middleware function in Express. It parses incoming requests with JSON payloads.
+app.use(express.json());
+
+// paths '/customer' are handled by customerRouter
+app.use(customerRouter);
+
+app.use(quizzesRouter);
+
+app.get("/", (req, res) => res.send("Server 3: Hello World"));
+
+// For invalid routes
+app.get("*", (req, res) => {
+  res.send("404! This is an invalid URL.");
+});
 
 app.listen(PORT, function (err) {
   if (err) console.log("Error in server setup");
-  console.log("Server! listening on Port", PORT);
+  console.log("Server listening on Port", PORT);
 });

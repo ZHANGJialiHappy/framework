@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node customerAPI.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "nodemon --watch '*.js' --exec node customerAPI.js"
+    "watch": "nodemon --watch '*.js' --exec node index.js"
   },
   "keywords": [],
   "author": "Sinisa Neskovic",

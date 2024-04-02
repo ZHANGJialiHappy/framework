@@ -1,1 +1,4 @@
-[{"customerId":15,"customerName":"John Johnson"},{"customerId":16,"customerName":"Jiali Johnson"}]
+[
+    {"customerId":15,"customerName":"John Johnson"},
+    {"customerId":16,"customerName":"Jiali Johnson"}
+]
