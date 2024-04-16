@@ -1,2 +1,5 @@
 .DS_Store
-APIDesign_example/node_modules
+JS-APIDesign_example/node_modules
+TS-APIDesign_example/node_modules
+Architecture/node_modules
+Architecture/build

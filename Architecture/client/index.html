@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p>test</p>
+    <script>
+      // async function getData1(url = "") {
+      //   const response = await fetch(url, {
+      //     method: "GET",
+      //     headers: {
+      //       Accept: "application/json",
+      //       "Content-Type": "application/json",
+      //     },
+      //   });
+      //   return response.json(); // parses JSON response into native JavaScript objects
+      // }
+
+      function postCustomer() {
+        fetch("http://localhost:3000/customers", {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ id: 23, customerName: "John Johnson" }),
+        })
+          .then((response) => {
+            if (response.ok)
+              return response.json(); // Promise.resolve ({ status:response.statusText})
+            else return response.json();
+          })
+          .then((data) => {
+            document.getElementById("data").innerHTML = JSON.stringify(
+              data,
+              null,
+              2
+            );
+          })
+          .catch((e) => {
+            document.getElementById("data").innerHTML = e.message;
+          });
+      }
+
+      function getData(url) {
+        fetch(url, {
+          method: "GET",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            document.getElementById("data").innerHTML = JSON.stringify(
+              data,
+              null,
+              2
+            );
+          })
+          .catch((e) => {
+            document.getElementById("data").innerHTML = e.message;
+          });
+      }
+    </script>
+
+    <h1>Call RESTful API</h1>
+    <button
+      type="button"
+      onclick="postCustomer('http://localhost:3000/customers'); return false"
+    >
+      Post Customer!
+    </button>
+    <button type="button" onclick="getData('http://localhost:3000/quizzes/1')">
+      Get Quiz!
+    </button>
+    <button type="button" onclick="getData('http://localhost:3000/customers')">
+      Get Customers!
+    </button>
+
+    <pre><code class="prettyprint"><div id="data">here comes JSON data</div></code></pre>
+  </body>
+</html>
